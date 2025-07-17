@@ -14,7 +14,7 @@ const USED_EMAILS = ["admin1@example.com", "test@example.com"];
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams?.get("next") || "/products";
+  const next = searchParams?.get("next") || "/";
 
   const [errorMsg, setErrorMsg] = useState("");
   const [checkingEmail, setCheckingEmail] = useState(false);
