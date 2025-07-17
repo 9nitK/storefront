@@ -1,12 +1,14 @@
-# Kombee Storefront – E-commerce Assignment
+# storefront – Kombee E-commerce Assignment
 
-This project is a modern, production-ready e-commerce storefront built from scratch for the Kombee assignment. It demonstrates senior-level frontend engineering with Next.js (App Router), TypeScript, Apollo GraphQL, and Tailwind CSS. All data and business logic are powered by the GraphQL APIs provided in the Postman collection.
+## 🚨 Important Note
+
+> **The product detail page currently only works perfectly with the first product. Other product pages may not function as expected due to demo constraints.**
 
 ---
 
 ## 🚀 Live Demo
 
-[View the deployed app on Vercel](https://your-vercel-link.vercel.app) <!-- Replace with your actual deployment link -->
+[View the deployed app on Vercel](https://storefront-git-main-9nitks-projects.vercel.app/)
 
 ---
 
@@ -71,8 +73,8 @@ This project is a modern, production-ready e-commerce storefront built from scra
 
 1. **Clone the repo:**
    ```bash
-   git clone https://github.com/yourusername/kombee-storefront.git
-   cd kombee-storefront
+   git clone https://github.com/9nitK/storefront.git
+   cd storefront
    ```
 2. **Install dependencies:**
    ```bash
@@ -94,7 +96,7 @@ This project is ready for deployment on Vercel, Netlify, or any platform support
 
 ### CI/CD: GitHub Actions
 
-Automated with GitHub Actions: see `.github/workflows/nextjs.yml` (Storefront CI).
+Automated with GitHub Actions: see `.github/workflows/nextjs.yml` (Storefront).
 Every push/PR to `main` triggers install, build, and lint steps.
 
 ---
