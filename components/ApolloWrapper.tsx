@@ -8,9 +8,7 @@ import {
 
 function makeClient() {
   const httpLink = new HttpLink({
-    uri:
-      process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ||
-      "https://saleor-kombee.onrender.com/graphql/",
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
     credentials: "include",
   });
 

@@ -73,7 +73,7 @@ export default function LoginPage() {
         setErrorMsg("Login failed. Please try again.");
       }
     },
-    onError: (error) => {
+    onError: () => {
       setErrorMsg("Something went wrong, try again.");
     },
   });

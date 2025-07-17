@@ -4,11 +4,9 @@ import ProductClientView from "@/views/products/ProductClientView";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-interface ProductPageProps {
-  params: { slug: string };
-}
+type Params = Promise<{ slug: string }>;
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<Params[]> {
   try {
     const { data } = await getClient().query({
       query: GET_PRODUCT_SLUGS,
@@ -18,7 +16,7 @@ export async function generateStaticParams() {
     return data.products.edges
       .filter(({ node }: { node: { slug?: string } }) => node?.slug)
       .map(({ node }: { node: { slug: string } }) => ({ slug: node.slug }));
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -26,13 +24,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Params;
 }): Promise<Metadata> {
   const { slug } = await params;
   try {
     const { data } = await getClient().query({
       query: GET_PRODUCT,
-      variables: { slug: slug, channel: "online-inr" },
+      variables: { slug, channel: "online-inr" },
     });
 
     const product = data?.product;
@@ -44,17 +42,8 @@ export async function generateMetadata({
         product?.seoDescription ||
         product?.description ||
         "Product details page.",
-      openGraph: {
-        title:
-          product?.seoTitle || product?.name || "Product | Kombee Storefront",
-        description:
-          product?.seoDescription ||
-          product?.description ||
-          "Product details page.",
-        type: "website",
-      },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Product | Kombee Storefront",
       description: "Product details page.",
@@ -67,9 +56,9 @@ export async function generateMetadata({
   }
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: { params: Params }) {
+  const { slug } = await params;
   try {
-    const { slug } = await params;
     const { data } = await getClient().query({
       query: GET_PRODUCT,
       variables: { slug, channel: "online-inr" },
@@ -79,7 +68,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     if (!product) return notFound();
 
     return <ProductClientView product={product} />;
-  } catch (error) {
+  } catch {
     return notFound();
   }
 }

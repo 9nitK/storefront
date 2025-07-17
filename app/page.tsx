@@ -45,7 +45,7 @@ export default async function ProductsPage() {
     }
 
     return <ProductListView initialData={data} />;
-  } catch (error) {
+  } catch {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">

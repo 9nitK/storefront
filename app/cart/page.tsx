@@ -20,7 +20,9 @@ export default function CartPage() {
       if (id && removeFromCart) {
         removeFromCart(id);
       }
-    } catch (error) {}
+    } catch {
+      console.log("Error removing from cart");
+    }
   };
 
   const handleClearCart = () => {
@@ -28,7 +30,9 @@ export default function CartPage() {
       if (clearCart) {
         clearCart();
       }
-    } catch (error) {}
+    } catch {
+      console.log("Error clearing cart");
+    }
   };
 
   return (
