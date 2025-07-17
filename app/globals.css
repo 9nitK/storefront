@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+@layer utilities {
+  .btn-gradient {
+    @apply cursor-pointer bg-gradient-to-r from-purple-500 to-pink-500 p-4 rounded-full text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg;
+  }
+
+  /* Reusable input field style */
+  .input-field {
+    @apply w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition;
+  }
+
+  /* Reusable glass card style */
+  .glass-card {
+    @apply bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 rounded-2xl border border-white/10 backdrop-blur-sm;
+  }
+
+  /* Gradient text header */
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+}
